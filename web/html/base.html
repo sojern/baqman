@@ -1,0 +1,50 @@
+{{ define "base" }}
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>BaqMan</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/custom.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        <a href="/"><strong>BaqMan</strong></a>
+                        <small>JobTracker for BigQuery</small>
+                    </h1>
+                    <!-- /.col-lg-12 -->
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <!-- TODO ADD FILTER -->
+            </div>
+            {{ if ne (len .Flashes) 0 }}
+            <div class="row">
+                {{ range .Flashes }}
+                <div class="col-lg-12">
+                    <div class="alert alert-success alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                        <strong>Cancelling </strong>  job {{.}}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+            {{ end }}
+            {{ template "content" . }}
+        </div>
+        <!-- /.container-fluid-->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>
+{{ end }}

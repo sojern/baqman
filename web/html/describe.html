@@ -1,0 +1,122 @@
+{{ define "content" }}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="page-header text-center">Details for {{ .Job.ID }}</h3>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        User
+                                    </strong>
+                                </td>
+                                <td>
+                                    {{ .Job.UserName }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        Query Size
+                                    </strong>
+                                </td>
+                                <td>
+                                    {{ .Job.HumanDataQueried }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        Query Cost
+                                    </strong>
+                                </td>
+                                <td>
+                                    {{ .Job.QueryCost }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        Start Time
+                                    </strong>
+                                </td>
+                                <td>
+                                    {{ .Job.StartTime }}
+                                </td>
+                            </tr>
+                            <tr>
+                                {{ if eq .Job.Status "DONE" }}
+                                <td>
+                                    <strong>
+                                        End Time
+                                    </strong>
+                                </td>
+                                <td>
+                                    {{ .Job.EndTime }}
+                                </td>
+                                {{ end }}
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        Run Time
+                                    </strong>
+                                </td>
+                                <td>
+                                    {{ .Job.RunTime }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        Status
+                                    </strong>
+                                </td>
+                                <td>
+                                    {{ .Job.Status }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>
+                                        Query
+                                    </strong>
+                                </td>
+                                <td>
+                                    <pre class="pre-scrollable"> {{ .Job.Query }} </pre>
+                                </td>
+                            </tr>
+                            {{ if eq .Job.Status "RUNNING" }}
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a href="/kill/{{.Job.ID}}">
+                                        <button type="submit" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-remove"></span> Kill
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                            {{ end }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <nav aria-label="...">
+                    <ul class="pager">
+                        <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+{{ end }}

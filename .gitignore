@@ -1,0 +1,29 @@
+venv
+.idea
+*.iml
+*.pyc
+nosetests.xml
+gotest.out
+tests.xml
+*_local.py
+build
+dist
+capper.egg-info
+logs/*
+supervisord.pid
+.ropeproject
+.zone
+.vagrant/*
+.vscode/*
+.dev
+
+## Coverage Files
+cover.out
+coverage.xml
+
+!**/.gitkeep
+
+## don't commit local config override files
+config_local.py
+bin/
+vendor/*

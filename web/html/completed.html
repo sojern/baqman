@@ -1,0 +1,68 @@
+{{ define "content" }}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                Completed Queries
+            </div>
+            <div class="panel-footer">
+                <nav aria-label="...">
+                    <ul class="pager">
+                        <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+                        {{ if ne .Jobs.NextPage "" }}
+                        <li>
+                            <a href="/completed?token={{ .Jobs.NextPage }}">
+                                More<span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </nav>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Job ID</th>
+                            <th>User Name</th>
+                            <th>Amount of Data Queried</th>
+                            <th>Time To Completion<th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range .Jobs.Done }}
+                        <tr>
+                            <td>{{.ID}}</td>
+                            <td>{{.UserName}}</td>
+                            <td>{{.HumanDataQueried}}</td>
+                            <td>{{.RunTime}}</td>
+                            <td>
+                                <a href="/describe/{{.ID}}">
+                                    <div class="button">
+                                        <input type="submit" value="info" name="{{.ID}}" class="btn btn-info" />
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer">
+                <nav aria-label="...">
+                    <ul class="pager">
+                        <li><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+                        {{ if ne .Jobs.NextPage "" }}
+                        <li>
+                            <a href="/completed?token={{ .Jobs.NextPage }}">
+                                More<span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
